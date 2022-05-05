@@ -1,4 +1,4 @@
-# Étape 4 : Le nom du fichier est passé en paramètre
+# Étape 5 : Les certificats sont publiés dans /etc/ssl
 
 
 # Nom du fichier en entrée
@@ -13,7 +13,14 @@ in_filename="${in_filename%.*}"             # Exclure tout jusqu'au premier poin
 # Nom du fichier en sortie (sans extension)
 fileout=${in_filename}
 
+# Répertoires pour la publication des certificats
+rep_public="/etc/ssl/certs"
+rep_private="/etc/ssl/private"
+
+# Mots de passe
+password=$2
+
 # Generation des certificats
-openssl pkcs12 -in "${filein}" -out ${fileout}_both.pem -nodes -passin pass:netlab123
-openssl pkcs12 -in "${filein}" -out ${fileout}_key.pem -nodes -nocerts -passin pass:netlab123
-openssl pkcs12 -in "${filein}" -out ${fileout}_cert.pem -nokeys -passin pass:netlab123
+openssl pkcs12 -in "${filein}" -out ${rep_private}/${fileout}_both.pem -nodes -passin pass:${password}
+openssl pkcs12 -in "${filein}" -out ${rep_private}/${fileout}_key.pem -nodes -nocerts -passin pass:${password}
+openssl pkcs12 -in "${filein}" -out ${rep_public}/${fileout}_cert.pem -nokeys -passin pass:${password}
