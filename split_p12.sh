@@ -1,8 +1,8 @@
-# Étape 2
+# Étape 4 : Le nom du fichier est passé en paramètre
 
 
 # Nom du fichier en entrée
-filein=sio.manastria.ovh.pfx
+filein="$1"
 
 # Nom du fichier sans l'extension
 # Voir la documentation : https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html, https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/aspects-avanc%C3%A9s-de-la-programmation-shell/substitution-de-variables
